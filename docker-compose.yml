@@ -5,9 +5,9 @@ services:
       container_name: palworld-server
       stop_grace_period: 30s # Set to however long you are willing to wait for the container to gracefully stop
       ports:
-        - 8211:8211/udp
-        - 27015:27015/udp
-        # - 8212:8212/tcp  # Port for REST API if REST_API_ENABLED: true
+         - 8211:8211/udp
+         - 27015:27015/udp
+         # - 8212:8212/tcp  # Port for REST API if REST_API_ENABLED: true
       environment:
          PUID: 1000
          PGID: 1000
@@ -19,9 +19,54 @@ services:
          RCON_PORT: 25575
          TZ: "Asia/Shanghai"
          ADMIN_PASSWORD: "admin"
-         COMMUNITY: false  # Enable this if you want your server to show up in the community servers tab, USE WITH SERVER_PASSWORD!
+         COMMUNITY: false # Enable this if you want your server to show up in the community servers tab, USE WITH SERVER_PASSWORD!
          SERVER_NAME: "palworld-server-docker by isomo"
-         SERVER_DESCRIPTION: "palworld-server-docker by isomo on 301"
+         SERVER_DESCRIPTION: "palworld-server-docker by isomo on 301 - Easy Mode Server"
          CROSSPLAY_PLATFORMS: "(Steam,Xbox,PS5,Mac)"
+
+         # Easy Mode Game Settings
+         # Experience & Progression
+         EXP_RATE: 3.0 # 3x experience gain
+         PAL_CAPTURE_RATE: 2.0 # 2x easier to catch Pals
+         COLLECTION_DROP_RATE: 2.0 # 2x more resources from gathering
+         ENEMY_DROP_ITEM_RATE: 2.0 # 2x more items from enemies
+         PAL_SPAWN_NUM_RATE: 1.5 # 1.5x more Pals spawning
+
+         # Survival & Comfort
+         PLAYER_STOMACH_DECREASE_RATE: 0.5 # 50% slower hunger decay
+         PLAYER_STAMINA_DECREASE_RATE: 0.5 # 50% slower stamina decay
+         PLAYER_AUTO_HP_REGEN_RATE: 2.0 # 2x faster health regen
+         PLAYER_AUTO_HP_REGEN_RATE_IN_SLEEP: 3.0 # 3x faster sleep healing
+         PAL_STOMACH_DECREASE_RATE: 0.5 # 50% slower pal hunger decay
+         PAL_STAMINA_DECREASE_RATE: 0.5 # 50% slower pal stamina decay
+         PAL_AUTO_HP_REGEN_RATE: 2.0 # 2x faster pal health regen
+         PAL_AUTO_HP_REGEN_RATE_IN_SLEEP: 3.0 # 3x faster pal sleep healing
+         ITEM_WEIGHT_RATE: 0.5 # 50% lighter items
+
+         # Combat & Defense
+         PLAYER_DAMAGE_RATE_DEFENSE: 0.5 # 50% less damage taken
+         PLAYER_DAMAGE_RATE_ATTACK: 1.5 # 50% more damage dealt
+         PAL_DAMAGE_RATE_ATTACK: 0.7 # Enemy pals deal 30% less damage
+         PAL_DAMAGE_RATE_DEFENSE: 1.3 # Pals take 30% more damage (easier to defeat)
+         DEATH_PENALTY: "Item" # Only drop items, keep Pals
+
+         # Building & Base Management
+         WORK_SPEED_RATE: 2.0 # 2x work speed
+         BASE_CAMP_WORKER_MAX_NUM: 20 # 20 workers per base (up from 15)
+         BUILD_OBJECT_HP_RATE: 2.0 # 2x building health
+         BUILD_OBJECT_DAMAGE_RATE: 0.5 # 50% less damage to buildings
+         BUILD_OBJECT_DETERIORATION_DAMAGE_RATE: 0.2 # 80% slower building decay
+         COLLECTION_OBJECT_HP_RATE: 0.5 # 50% less health on gatherable objects
+         COLLECTION_OBJECT_RESPAWN_SPEED_RATE: 2.0 # 2x faster resource respawn
+
+         # Quality of Life
+         ENABLE_INVADER_ENEMY: false # Disable invasions for peaceful gameplay
+         ENABLE_NON_LOGIN_PENALTY: false # No penalties for being offline
+         PAL_EGG_DEFAULT_HATCHING_TIME: 24.0 # 24 hours to hatch eggs (down from 72)
+         DROP_ITEM_ALIVE_MAX_HOURS: 24.0 # Items last 24 hours on ground
+         DROP_ITEM_MAX_NUM: 5000 # More items can exist in world
+         AUTO_SAVE_SPAN: 10.0 # Save every 10 seconds
+         DAYTIME_SPEEDRATE: 1.5 # 1.5x faster days
+         NIGHTTIME_SPEEDRATE: 2.0 # 2x faster nights
       volumes:
          - ./palworld:/palworld/
