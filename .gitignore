@@ -1,1 +1,6 @@
 palworld/*
+!palworld/Pal/
+palworld/Pal/*
+!palworld/Pal/Saved/
+palworld/Pal/Saved/Config/CrashReportClient/
+palworld/Pal/Saved/SaveGames/0/**/backup/
