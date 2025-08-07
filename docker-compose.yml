@@ -9,8 +9,8 @@ services:
          - 27015:27015/udp
          # - 8212:8212/tcp  # Port for REST API if REST_API_ENABLED: true
       environment:
-         PUID: 1000
-         PGID: 1000
+         PUID: 1001
+         PGID: 1001
          PORT: 8211 # Optional but recommended
          PLAYERS: 16 # Optional but recommended
          SERVER_PASSWORD: "palworld" # Optional but recommended
